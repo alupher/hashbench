@@ -6,9 +6,9 @@ import com.google.caliper.Param;
 public final class HashBenchmark {
 	@Param({
 		"4",
-		"8",/*
+		"8",
 		"16",
-		"32"*/
+		"32"
 	}) int inputLength;
 	
 		
