@@ -9,12 +9,12 @@ import java.util.Random;
 final class Hash {
 
 	private static HashFunction guava_hf = Hashing.murmur3_128();
+	private static Random rand = new Random();
 	
 	static int streamlib_murmur32(int inputLength) {
 		// Use a dummy value to prevent the JIT from skipping the hashing
 		int dummy = 0;
 		byte[] input = new byte[inputLength];
-		Random rand = new Random();
 		
 		rand.nextBytes(input);
 		dummy |= MurmurHash.hash(input);
@@ -25,10 +25,9 @@ final class Hash {
 	static int guava_murmur128(int inputLength) {
 		int dummy = 0;
 		byte[] input = new byte[inputLength];
-		Random rand = new Random();
-
+		
 		rand.nextBytes(input);
-		dummy |= Hash.guava_hf.hashBytes(input).asInt();
+		dummy |= guava_hf.hashBytes(input).asInt();
 		
 		return dummy;
 	}
@@ -36,9 +35,8 @@ final class Hash {
 	static int shark_murmur128(int inputLength) {
 		int dummy = 0;
 		byte[] input = new byte[inputLength];
-		Random rand = new Random();
-		
 		int[] result = new int[4];
+		
 		rand.nextBytes(input);
 		MurmurHash3_x86_128.hash(input, 0, 4, result);
 		dummy |= result[0]; 
