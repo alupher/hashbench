@@ -6,10 +6,11 @@ import com.google.caliper.Param;
 public final class HashBenchmark {
 	@Param({
 		"4",
-		"8",
+		"8",/*
 		"16",
-		"32"
+		"32"*/
 	}) int inputLength;
+	
 		
 	@Benchmark int shark_murmur128(int reps) {
 		int inputLength = this.inputLength;
