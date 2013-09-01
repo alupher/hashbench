@@ -10,7 +10,6 @@ public final class HashBenchmark {
 		"16",
 		"32"
 	}) int inputLength;
-	
 		
 	@Benchmark int shark_murmur128(int reps) {
 		int inputLength = this.inputLength;
