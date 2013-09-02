@@ -23,6 +23,17 @@ final class Hash {
 		return dummy;
 	}
 	
+	static int streamlib_murmur64(int inputLength) {
+		// Use a dummy value to prevent the JIT from skipping the hashing
+		int dummy = 0;
+		byte[] input = new byte[inputLength];
+		
+		rand.nextBytes(input);
+		dummy |= MurmurHash.hash64(input);
+		
+		return dummy;
+	}
+	
 	static int guava_murmur128(int inputLength) {
 		int dummy = 0;
 		byte[] input = new byte[inputLength];

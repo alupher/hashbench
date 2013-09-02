@@ -37,4 +37,13 @@ public final class HashBenchmark {
 		}
 		return dummy;
 	}
+	
+	@Benchmark int streamlib_murmur64(int reps) {
+		int inputLength = this.inputLength;
+		int dummy = 0;
+		for (int i = 0; i < reps; i++) {
+			dummy |= Hash.streamlib_murmur64(inputLength);
+		}
+		return dummy;
+	}
 }
